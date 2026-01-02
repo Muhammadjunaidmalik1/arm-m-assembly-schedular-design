@@ -1,0 +1,152 @@
+
+foo.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <vector_table>:
+   0:	0000abc0 	andeq	sl, r0, r0, asr #23
+   4:	00000199 	muleq	r0, r9, r1
+	...
+
+00000198 <reset_handler>:
+    .section .text
+    .align 1
+    .type reset_handler, %function
+
+reset_handler:
+    mov r1, #7  // # immidiate value , if # followed by hexa decimal value it is address , if decimal its a number
+ 198:	2107      	movs	r1, #7
+    mov r2, #3
+ 19a:	2203      	movs	r2, #3
+    add r3, r1, r2  // Addition
+ 19c:	188b      	adds	r3, r1, r2
+
+    b junaid
+ 19e:	e001      	b.n	1a4 <junaid>
+
+000001a0 <junaid2>:
+
+junaid2:
+
+    sub r4, r1, r2 // subtract
+ 1a0:	1a8c      	subs	r4, r1, r2
+
+    b end
+ 1a2:	e002      	b.n	1aa <end>
+
+000001a4 <junaid>:
+
+junaid:
+    mov r5, r3
+ 1a4:	1c1d      	adds	r5, r3, #0
+    lsl r6, r5, #2 // logical shift
+ 1a6:	00ae      	lsls	r6, r5, #2
+
+    b junaid2
+ 1a8:	e7fa      	b.n	1a0 <junaid2>
+
+000001aa <end>:
+
+end:
+ 1aa:	f7ff fffe 	bl	1aa <end>
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002041 	andeq	r2, r0, r1, asr #32
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000016 	andeq	r0, r0, r6, lsl r0
+  10:	726f4305 	rsbvc	r4, pc, #335544320	; 0x14000000
+  14:	2d786574 	cfldr64cs	mvdx6, [r8, #-464]!	; 0xfffffe30
+  18:	0600334d 	streq	r3, [r0], -sp, asr #6
+  1c:	094d070a 	stmdbeq	sp, {r1, r3, r8, r9, sl}^
+  20:	Address 0x0000000000000020 is out of bounds.
+
+
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	0000003a 	andeq	r0, r0, sl, lsr r0
+   4:	001c0003 	andseq	r0, ip, r3
+   8:	01020000 	mrseq	r0, (UNDEF: 2)
+   c:	000d0efb 	strdeq	r0, [sp], -fp
+  10:	01010101 	tsteq	r1, r1, lsl #2
+  14:	01000000 	mrseq	r0, (UNDEF: 0)
+  18:	00010000 	andeq	r0, r1, r0
+  1c:	2e6f6f66 	cdpcs	15, 6, cr6, cr15, cr6, {3}
+  20:	00000053 	andeq	r0, r0, r3, asr r0
+  24:	05000000 	streq	r0, [r0, #-0]
+  28:	00019802 	andeq	r9, r1, r2, lsl #16
+  2c:	010b0300 	mrseq	r0, (UNDEF: 59)
+  30:	24222121 	strtcs	r2, [r2], #-289	; 0xfffffedf
+  34:	22212322 	eorcs	r2, r1, #-2013265920	; 0x88000000
+  38:	00020223 	andeq	r0, r2, r3, lsr #4
+  3c:	Address 0x000000000000003c is out of bounds.
+
+
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	00000022 	andeq	r0, r0, r2, lsr #32
+   4:	00000002 	andeq	r0, r0, r2
+   8:	01040000 	mrseq	r0, (UNDEF: 4)
+   c:	00000000 	andeq	r0, r0, r0
+  10:	00000198 	muleq	r0, r8, r1
+  14:	000001ae 	andeq	r0, r0, lr, lsr #3
+  18:	00000000 	andeq	r0, r0, r0
+  1c:	00000006 	andeq	r0, r0, r6
+  20:	00000057 	andeq	r0, r0, r7, asr r0
+  24:	Address 0x0000000000000024 is out of bounds.
+
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	10001101 	andne	r1, r0, r1, lsl #2
+   4:	12011106 	andne	r1, r1, #-2147483647	; 0x80000001
+   8:	1b0e0301 	blne	380c14 <end+0x380a6a>
+   c:	130e250e 	movwne	r2, #58638	; 0xe50e
+  10:	00000005 	andeq	r0, r0, r5
+
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	0000001c 	andeq	r0, r0, ip, lsl r0
+   4:	00000002 	andeq	r0, r0, r2
+   8:	00040000 	andeq	r0, r4, r0
+   c:	00000000 	andeq	r0, r0, r0
+  10:	00000198 	muleq	r0, r8, r1
+  14:	00000016 	andeq	r0, r0, r6, lsl r0
+	...
+
+Disassembly of section .debug_str:
+
+00000000 <.debug_str>:
+   0:	2e6f6f66 	cdpcs	15, 6, cr6, cr15, cr6, {3}
+   4:	772f0053 			; <UNDEFINED> instruction: 0x772f0053
+   8:	736b726f 	cmnvc	fp, #-268435450	; 0xf0000006
+   c:	65636170 	strbvs	r6, [r3, #-368]!	; 0xfffffe90
+  10:	72612f73 	rsbvc	r2, r1, #460	; 0x1cc
+  14:	2d6d2d6d 	stclcs	13, cr2, [sp, #-436]!	; 0xfffffe4c
+  18:	65737361 	ldrbvs	r7, [r3, #-865]!	; 0xfffffc9f
+  1c:	796c626d 	stmdbvc	ip!, {r0, r2, r3, r5, r6, r9, sp, lr}^
+  20:	6863732d 	stmdavs	r3!, {r0, r2, r3, r5, r8, r9, ip, sp, lr}^
+  24:	6c756465 	cfldrdvs	mvd6, [r5], #-404	; 0xfffffe6c
+  28:	642d7261 	strtvs	r7, [sp], #-609	; 0xfffffd9f
+  2c:	67697365 	strbvs	r7, [r9, -r5, ror #6]!
+  30:	5f322f6e 	svcpl	0x00322f6e
+  34:	74726f63 	ldrbtvc	r6, [r2], #-3939	; 0xfffff09d
+  38:	6d5f7865 	ldclvs	8, cr7, [pc, #-404]	; fffffeac <end+0xfffffd02>
+  3c:	6e695f33 	mcrvs	15, 3, r5, cr9, cr3, {1}
+  40:	75727473 	ldrbvc	r7, [r2, #-1139]!	; 0xfffffb8d
+  44:	6f697463 	svcvs	0x00697463
+  48:	655f736e 	ldrbvs	r7, [pc, #-878]	; fffffce2 <end+0xfffffb38>
+  4c:	72657078 	rsbvc	r7, r5, #120	; 0x78
+  50:	6e656d69 	cdpvs	13, 6, cr6, cr5, cr9, {3}
+  54:	47007374 	smlsdxmi	r0, r4, r3, r7
+  58:	4120554e 			; <UNDEFINED> instruction: 0x4120554e
+  5c:	2e322053 	mrccs	0, 1, r2, cr2, cr3, {2}
+  60:	Address 0x0000000000000060 is out of bounds.
+
